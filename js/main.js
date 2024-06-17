@@ -30,6 +30,7 @@ function layDuLieuNhanVien() {
 
     // Kiểm tra thoả điều kiện
     isValid = isValid && !isEmpty;
+    console.log("empty " + isValid);
 
     // console.log("empty: " + isValid);
 
@@ -38,24 +39,27 @@ function layDuLieuNhanVien() {
       checkTaiKhoan(value, (min = 4), (max = 6), spanDiv);
       // Kiểm tra thoả điều kiện
       isValid = isValid && checkTaiKhoan(value, (min = 4), (max = 6), spanDiv);
+      console.log("taikhoan " + isValid);
     }
 
     // Kiểm tra tên Nhân viên
     if (id === "name" && !isEmpty) {
       checkTen(value, spanDiv);
       isValid = isValid && checkTen(value, spanDiv);
+      console.log("ten " + isValid);
     }
 
     // Kiểm tra email
     if (id === "email" && !isEmpty) {
       checkEmail(value, spanDiv);
       isValid = isValid && checkEmail(value, spanDiv);
+      console.log("email " + isValid);
     }
 
     // Kiểm tra mật khẩu
     if (id === "password" && !isEmpty) {
       checkMatKhau(value, (min = 6), (max = 10), spanDiv);
-      //   isValid = isValid && checkMatKhau(value, (min = 6), (max = 10), spanDiv);
+      isValid = isValid && checkMatKhau(value, (min = 6), (max = 10), spanDiv);
     }
 
     // Kiểm tra lương cơ bản
@@ -64,35 +68,41 @@ function layDuLieuNhanVien() {
       isValid =
         isValid &&
         checkLuongCb(value, (min = 1000000), (max = 20000000), spanDiv);
+      console.log("luongcb " + isValid);
     }
 
     // Kiểm tra số giờ làm trong tháng
     if (id === "gioLam" && !isEmpty) {
       checkGioLam(value, (min = 80), (max = 200), spanDiv);
       isValid = isValid && checkGioLam(value, (min = 80), (max = 200), spanDiv);
+      console.log("giolam " + isValid);
     }
   }
-  //   console.log("final" + isValid);
+  console.log("final" + isValid);
 
-  //   if (isValid) {
-  //     return nhanVien;
-  //   }
-  console.log(nhanVien);
-  return nhanVien;
+  if (isValid) {
+    // console.log(nhanVien);
+    return nhanVien;
+  }
+
+  //   return nhanVien;
 }
 
 document.getElementById("formThongTin").onsubmit = function (e) {
   e.preventDefault();
 
   let nhanVien = layDuLieuNhanVien();
-  console.log(nhanVien);
+  if (!nhanVien) {
+    return;
+  }
+  //   console.log(nhanVien);
 
   //   Thêm Nhan Viên Vào Mảng
   arrNhanVien.push(nhanVien);
-  console.log(arrNhanVien);
+  //   console.log(arrNhanVien);
 
   //   Xoá các trường có trên mảng
-  e.target.reset();
+  //   e.target.reset();
 
   //   In nhan vien ra bang
   inNhanVien();

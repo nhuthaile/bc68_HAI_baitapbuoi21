@@ -66,10 +66,13 @@ function checkMatKhau(value, min, max, spanDiv) {
     ) {
       //   console.log(value);
       content = `Mật khẩu chứa ít nhất một ký tự in hoa, một ký tự số và một ký tự đặc biệt`;
+      spanDiv.style.display = "block";
+      spanDiv.innerHTML = content;
+      return false;
+    } else {
+      spanDiv.innerHTML = "";
+      return true;
     }
-    spanDiv.style.display = "block";
-    spanDiv.innerHTML = content;
-    return false;
   } else {
     spanDiv.style.display = "block";
     spanDiv.innerHTML = `Độ dài mật khẩu từ ${min} tới ${max} chữ`;
