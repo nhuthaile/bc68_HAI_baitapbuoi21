@@ -80,14 +80,14 @@ function layDuLieuNhanVien() {
   }
   console.log("final" + isValid);
 
-  if (isValid) {
-    // console.log(nhanVien);
-    return nhanVien;
-  }
+  //   if (isValid) {
+  //     return nhanVien;
+  //   }
 
-  //   return nhanVien;
+  return nhanVien;
 }
 
+// Form Onsubmit
 document.getElementById("formThongTin").onsubmit = function (e) {
   e.preventDefault();
 
@@ -102,7 +102,7 @@ document.getElementById("formThongTin").onsubmit = function (e) {
   //   console.log(arrNhanVien);
 
   //   Xoá các trường có trên mảng
-  //   e.target.reset();
+  e.target.reset();
 
   //   In nhan vien ra bang
   inNhanVien();
@@ -134,10 +134,26 @@ function inNhanVien() {
 		<td>${email}</td>
 		<td>${datepicker}</td>
 		<td>${chucvu}</td>
-		<td>${tongLuong}</td>
-		<td>${xepLoai}</td>
+		<td>${nhanVien.tongLuong()}</td>
+		<td>${nhanVien.xepLoai()}</td>
+        <td>
+		<button onclick="xoaNhanVien('${tknv}')" class="btn btn-danger">Xoá</button>
+		<button onclick="capNhat('${tknv}')" class="btn btn-warning mt-3">Cập Nhật</button>
+	</td>
 	</tr>`;
   }
 
   document.getElementById("tableDanhSach").innerHTML = thongTin;
 }
+
+// Xoá thông tin nhân viên
+function xoaNhanVien(tknv) {
+  arrNhanVien = arrNhanVien.filter((nhanVien) => nhanVien.tknv !== tknv);
+
+  //   In Thong tin Nhan Vien
+  inNhanVien();
+}
+
+// Cập nhật thông tin nhân viên
+
+function capNhat(tknv) {}
