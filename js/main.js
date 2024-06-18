@@ -80,11 +80,11 @@ function layDuLieuNhanVien() {
   }
   // console.log("final" + isValid);
 
-  if (isValid) {
-    return nhanVien;
-  }
+  // if (isValid) {
+  //   return nhanVien;
+  // }
 
-  // return nhanVien;
+  return nhanVien;
 }
 
 // Form Onsubmit
@@ -98,7 +98,17 @@ document.getElementById("formThongTin").onsubmit = function (e) {
   //   console.log(nhanVien);
 
   //   Thêm Nhan Viên Vào Mảng
-  arrNhanVien.push(nhanVien);
+  // Kiểm tra xem mảng có chứa phần tử nhanVien chưa
+  let arrrTknv = [];
+  for (let item of arrNhanVien) {
+    arrrTknv.push(item.tknv);
+  }
+  if (arrrTknv.includes(nhanVien.tknv)) {
+    return;
+  } else {
+    arrNhanVien.push(nhanVien);
+  }
+
   //   console.log(arrNhanVien);
 
   //   Xoá các trường có trên mảng
