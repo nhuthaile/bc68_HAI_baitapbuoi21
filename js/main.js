@@ -80,11 +80,11 @@ function layDuLieuNhanVien() {
   }
   // console.log("final" + isValid);
 
-  // if (isValid) {
-  //   return nhanVien;
-  // }
+  if (isValid) {
+    return nhanVien;
+  }
 
-  return nhanVien;
+  // return nhanVien;
 }
 
 // Form Onsubmit
